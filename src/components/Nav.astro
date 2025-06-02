@@ -1,0 +1,71 @@
+---
+import { SITE } from "@consts";
+---
+
+<nav class="font-mono">
+    <!-- medium screen and up nav -->
+    <ul
+        class="hidden z-10 bg-neutral-700 text-white shadow md:flex fixed w-full px-10 h-20 justify-between items-center"
+    >
+        <li class="font-bold grow">
+            <a href="/">{SITE.TITLE}</a>
+        </li>
+        <li class="underline px-12">
+            <a id="mobile-link" href="/">link1</a>
+            <a id="mobile-link" href="/">link2</a>
+            <a id="mobile-link" href="/">link3</a>
+        </li>
+    </ul>
+    <!-- small screen nav -->
+    <ul
+        class="flex z-10 bg-neutral-700 text-white shadow md:hidden fixed w-full px-5 h-20 justify-between items-center"
+    >
+        <a href="/" class="font-bold">{SITE.TITLE}</a>
+        <button
+            aria-label="hamburger"
+            id="hamburger"
+            class="flex flex-col justify-evenly w-8 h-8"
+        >
+            <div class="h-[2px] w-full bg-white"></div>
+            <div class="h-[2px] w-4/5 bg-white"></div>
+            <div class="h-[2px] w-full bg-white"></div>
+        </button>
+    </ul>
+    <!-- block to push down content at top -->
+    <div class="block w-full h-20"></div>
+    <!-- small screen nav links -->
+    <nav
+        class="fixed w-screen z-20 pointer-events-none opacity-0 h-screen transition-opacity bg-neutral-700 text-white shadow right-0 top-0"
+        id="mobile-nav-links"
+    >
+        <div class="flex h-20 relative px-5 justify-between items-center">
+            <a href="/" class="font-bold">{SITE.TITLE}</a>
+            <button aria-label="hamburger-exit" id="hamburger-exit">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-10"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col gap-10 px-5 py-10 text-2xl">
+            <a id="mobile-link underline" href="/">link1</a>
+            <a id="mobile-link underline" href="/">link2</a>
+            <a id="mobile-link underline" href="/">link3</a>
+            <div class="h-px w-full bg-white"></div>
+        </ul>
+    </nav>
+    <!-- /small screen nav -->
+</nav>
+
+<script>
+    import "@scripts/mobileMenu";
+</script>
