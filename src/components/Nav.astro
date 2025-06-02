@@ -2,52 +2,47 @@
 import { SITE } from "@consts";
 ---
 
-<nav class="font-mono">
-    <!-- block to push down content at top -->
+<nav>
+    <!-- Spacer block -->
+    <div class="h-20"></div>
 
-    <!-- medium screen and up nav -->
+    <!-- Desktop nav -->
     <ul
-        class="hidden z-10 backdrop-blur-sm text-white shadow md:flex fixed w-full px-10 h-20 justify-between items-center"
+        class="hidden backdrop-blur-sm md:flex fixed top-0 w-full px-2 h-20 text-white shadow justify-between items-center"
     >
         <li class="font-bold grow">
             <a href="/">{SITE.TITLE}</a>
         </li>
-        <li class="underline px-12">
-            <a class="mobile-link underline" href="/">link1</a>
-            <a class="mobile-link underline" href="/">link2</a>
-            <a class="mobile-link underline" href="/">link3</a>
+        <li class="space-x-12">
+            <a href="/" class="underline">link1</a>
+            <a href="/" class="underline">link2</a>
+            <a href="/" class="underline">link3</a>
         </li>
     </ul>
-    <!-- /medium screen and up nav -->
-    <!-- small screen nav -->
+
+    <!-- Mobile nav -->
     <ul
-        class="flex z-20 backdrop-blur-sm text-white md:hidden fixed w-full px-5 h-20 justify-between items-center"
+        class="flex md:hidden backdrop-blur-sm fixed top-0 w-full px-2 h-20 text-white z-20 justify-between items-center"
     >
         <a href="/" class="font-bold">{SITE.TITLE}</a>
         <label class="hamburger-menu">
             <input type="checkbox" />
         </label>
     </ul>
-    <div class="block w-full h-20"></div>
 
-    <!-- small screen nav links -->
+    <!-- Mobile menu overlay -->
     <nav
-        class="fixed w-screen z-10 pointer-events-none opacity-0 h-screen transition-opacity backdrop-blur-sm text-white shadow right-0 top-0"
         id="mobile-nav-links"
+        class="fixed inset-0 z-10 backdrop-blur-sm opacity-0 pointer-events-none mt-20 transition-opacity text-white"
     >
-        <div class="flex h-20 relative px-5 justify-between items-center">
-            <a href="/" class="font-bold">{SITE.TITLE}</a>
-        </div>
         <ul class="flex flex-col gap-10 px-5 py-10 text-2xl">
-            <a class="underline" href="/">link1</a>
-            <a class="underline" href="/">link3</a>
-            <a class="underline" href="/">link2</a>
+            <a href="/" class="underline">link1</a>
+            <a href="/" class="underline">link2</a>
+            <a href="/" class="underline">link3</a>
             <div class="h-px w-full bg-white"></div>
         </ul>
     </nav>
-    <!--/small screen nav links -->
 </nav>
-<!-- /small screen nav -->
 
 <script>
     import "@scripts/mobileMenu";
