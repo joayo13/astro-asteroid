@@ -1,16 +1,23 @@
-const hamburger = document.querySelector("#hamburger") as HTMLButtonElement;
-const hamburgerExit = document.querySelector("#hamburger-exit") as HTMLButtonElement;
-const mobileLink = document.querySelector("#mobile-link") as HTMLAnchorElement;
+const hamburger = document.querySelector(".hamburger-menu input") as HTMLInputElement;
 const mobileNavLinks = document.querySelector("#mobile-nav-links") as HTMLElement;
 
 const toggleMobileNav = () => {
-    mobileNavLinks.classList.toggle("pointer-events-none");
-    mobileNavLinks.classList.toggle("opacity-0");
-    mobileNavLinks.classList.toggle("no-doc-scroll");
+    if (!hamburger.checked) {
+        mobileNavLinks.classList.add("pointer-events-none");
+        mobileNavLinks.classList.add("opacity-0");
+        mobileNavLinks.classList.add("no-doc-scroll");
+    }
+    else {
+        mobileNavLinks.classList.remove("pointer-events-none");
+        mobileNavLinks.classList.remove("opacity-0");
+        mobileNavLinks.classList.remove("no-doc-scroll");
+    }
 };
 
 hamburger.addEventListener("click", toggleMobileNav);
-hamburgerExit.addEventListener("click", toggleMobileNav);
-mobileLink.addEventListener("click", () => {
-    toggleMobileNav();
+const mobileLinks = document.querySelectorAll(".mobile-link");
+mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        toggleMobileNav();
+    });
 });
