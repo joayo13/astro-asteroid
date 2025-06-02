@@ -6,13 +6,16 @@
     box-sizing: border-box;
 }
 
+
+
 html,
 body {
     margin: 0;
     width: 100%;
     height: 100%;
     background-color: var(--background);
-    color: white;
+    color: var(--text-color);
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -28,9 +31,32 @@ body {
     --bar-height: 4px;
     --hamburger-gap: 8px;
     --foreground: #f6f6f6;
+    --text-color: #f6f6f6;
     --animation-timing: 200ms ease-in-out;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
     --background: #060606;
+}
+
+/* inter-regular - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/inter-v18-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-700 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/inter-v18-latin-700.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 .hamburger-menu {
@@ -87,4 +113,17 @@ body {
 .hamburger-menu input:checked {
     opacity: 0;
     width: 0;
+}
+
+.animate {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all;
+    transition-timing-function: ease-out;
+    transition-duration: 500ms;
+}
+
+.animate.show {
+    opacity: 1;
+    transform: translateY(0);
 }
