@@ -6,23 +6,26 @@ import { SITE } from "@consts";
     <!-- Spacer block -->
     <div class="h-20"></div>
 
-    <!-- Desktop nav -->
-    <ul
-        class="hidden backdrop-blur-sm md:flex fixed top-0 w-full px-2 h-20 text-white shadow justify-between items-center"
-    >
-        <li class="font-bold grow">
-            <a href="/">{SITE.TITLE}</a>
-        </li>
-        <li class="space-x-12">
-            <a href="/" class="underline">link1</a>
-            <a href="/" class="underline">link2</a>
-            <a href="/" class="underline">link3</a>
-        </li>
-    </ul>
+    <div class="group">
+        <ul
+            id="desktop-nav"
+            class="hidden transition-transform duration-300 translate-y-0 group-focus-within:translate-y-0 opacity-100 backdrop-blur-sm md:flex fixed top-0 w-full px-20 h-20 shadow justify-between items-center"
+        >
+            <li class="font-bold grow">
+                <a href="/">{SITE.TITLE}</a>
+            </li>
+            <li class="space-x-12">
+                <a href="/" class="underline">link1</a>
+                <a href="/" class="underline">link2</a>
+                <a href="/" class="underline">link3</a>
+            </li>
+        </ul>
+    </div>
 
     <!-- Mobile nav -->
     <ul
-        class="flex md:hidden backdrop-blur-sm fixed top-0 w-full px-2 h-20 text-white z-20 justify-between items-center"
+        id="mobile-nav"
+        class="flex transition-all translate-y-0 md:hidden opacity-100 backdrop-blur-sm fixed top-0 w-full px-4 h-20 z-20 justify-between items-center"
     >
         <a href="/" class="font-bold">{SITE.TITLE}</a>
         <label class="hamburger-menu">
@@ -33,7 +36,7 @@ import { SITE } from "@consts";
     <!-- Mobile menu overlay -->
     <nav
         id="mobile-nav-links"
-        class="fixed inset-0 z-10 backdrop-blur-sm opacity-0 pointer-events-none mt-20 transition-opacity text-white"
+        class="fixed inset-0 z-10 backdrop-blur-sm opacity-0 pointer-events-none mt-20 transition-opacity"
     >
         <ul class="flex flex-col gap-10 px-5 py-10 text-2xl">
             <a href="/" class="underline">link1</a>
@@ -46,4 +49,25 @@ import { SITE } from "@consts";
 
 <script>
     import "@scripts/mobileMenu";
+</script>
+<script is:inline>
+    let lastScroll = 0;
+    const desktopNav = document.getElementById("desktop-nav");
+    const mobileNav = document.getElementById("mobile-nav");
+
+    window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // scrolling down
+            desktopNav?.classList.add("translate-y-[-100%]");
+            mobileNav?.classList.add("translate-y-[-100%]");
+        } else {
+            // scrolling up
+            desktopNav?.classList.remove("translate-y-[-100%]");
+            mobileNav?.classList.remove("translate-y-[-100%]");
+        }
+
+        lastScroll = currentScroll;
+    });
 </script>

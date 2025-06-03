@@ -15,9 +15,9 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<Head title={`${title} | ${SITE.TITLE}`} description={description} />
-	<body>
+	<body class="px-4 dark:bg-black dark:text-white text-black">
 		<Nav />
-		<main class="px-2">
+		<main class="max-w-6xl mx-auto">
 			<slot />
 		</main>
 	</body>

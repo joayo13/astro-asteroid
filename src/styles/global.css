@@ -11,10 +11,9 @@
 html,
 body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--background);
-    color: var(--text-color);
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
@@ -30,11 +29,9 @@ body {
     --bar-width: 40px;
     --bar-height: 4px;
     --hamburger-gap: 8px;
-    --foreground: #f6f6f6;
-    --text-color: #f6f6f6;
+    --hamburger-color: #f6f6f6;
     --animation-timing: 200ms ease-in-out;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
-    --background: #060606;
 }
 
 /* inter-regular - latin */
@@ -73,7 +70,7 @@ body {
 .hamburger-menu:has(input:focus-visible)::after,
 .hamburger-menu input:focus-visible {
     border: 1px solid var(--background);
-    box-shadow: 0 0 0 1px var(--foreground);
+    box-shadow: 0 0 0 1px var(--hamburger-color);
 }
 
 .hamburger-menu::before,
@@ -82,7 +79,7 @@ body {
     content: "";
     width: var(--bar-width);
     height: var(--bar-height);
-    background-color: var(--foreground);
+    background-color: var(--hamburger-color);
     border-radius: 9999px;
     transform-origin: left center;
     transition: opacity var(--animation-timing), width var(--animation-timing),
