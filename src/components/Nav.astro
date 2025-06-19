@@ -2,36 +2,24 @@
 import { SITE } from "@consts";
 ---
 
-<nav>
+<nav class="fixed flex items-center border border-red-500 w-full h-20 px-10">
     <!-- Spacer block -->
-    <div class="h-20"></div>
-
-    <div class="group">
-        <ul
-            id="desktop-nav"
-            class="hidden transition-transform duration-300 translate-y-0 group-focus-within:translate-y-0 opacity-100 backdrop-blur-sm md:flex fixed top-0 w-full px-20 h-20 shadow justify-between items-center"
-        >
-            <li class="font-bold grow">
-                <a href="/">{SITE.TITLE}</a>
-            </li>
-            <li class="space-x-12">
+        <ul class="hidden md:flex ml-auto gap-24 w-fit bg-black">
+             <li>
                 <a href="/" class="underline">link1</a>
-                <a href="/" class="underline">link2</a>
-                <a href="/" class="underline">link3</a>
+            </li>
+                <li >
+                <a href="/" class="underline">link1</a>
+            </li>
+                <li >
+                <a href="/" class="underline">link1</a>
             </li>
         </ul>
-    </div>
+    <!-- Hamburger -->
 
-    <!-- Mobile nav -->
-    <ul
-        id="mobile-nav"
-        class="flex transition-all translate-y-0 md:hidden bg-black opacity-100 fixed top-0 w-full px-4 h-20 z-20 justify-between items-center"
-    >
-        <a href="/" class="font-bold">{SITE.TITLE}</a>
-        <label class="hamburger-menu">
+        <label class="hamburger-menu flex md:hidden ml-auto">
             <input type="checkbox" />
         </label>
-    </ul>
 
     <!-- Mobile menu overlay -->
     <nav
