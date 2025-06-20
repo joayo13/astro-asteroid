@@ -24,9 +24,9 @@ body {
 }
 
 :root {
-  --bar-width: 40px;
-  --bar-height: 4px;
-  --hamburger-gap: 8px;
+  --bar-width: 60px;
+  --bar-height: 6px;
+  --hamburger-gap: 9px;
   --hamburger-color: #f6f6f6;
   --animation-timing: 200ms ease-in-out;
   --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
