@@ -1,24 +1,24 @@
 ---
-import Head from "@components/Head.astro";
-import "@styles/global.css";
-import { SITE } from "@consts";
-import Header from "@components/Header.astro";
+import Head from '@components/Head.astro'
+import '@styles/global.css'
+import { SITE } from '@consts'
+import Header from '@components/Header.astro'
 
 type Props = {
-	title: string;
-	description: string;
-};
+    title: string
+    description: string
+}
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-	<Head title={`${title} | ${SITE.TITLE}`} description={description} />
-	<body>
-		<Header />
-		<main class="max-w-6xl mx-auto border border-red-500 px-4">
-			<slot />
-		</main>
-	</body>
+    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
+    <body>
+        <Header />
+        <main class="max-w-6xl mx-auto border border-red-500 px-4">
+            <slot />
+        </main>
+    </body>
 </html>

@@ -1,23 +1,26 @@
 ---
-import { SITE } from "@consts";
+import { SITE } from '@consts'
 ---
-<nav class="fixed flex items-center border border-red-500 w-full h-[var(--h-header)] px-10">
-        <a href="/">{SITE.TITLE}</a>
-        <ul class="hidden md:flex ml-auto gap-24 w-fit">
-             <li>
-                <a href="/" class="underline">link1</a>
-            </li>
-                <li >
-                <a href="/" class="underline">link1</a>
-            </li>
-                <li >
-                <a href="/" class="underline">link1</a>
-            </li>
-        </ul>
+
+<nav
+    class="fixed flex items-center border border-red-500 w-full h-[var(--h-header)] px-10"
+>
+    <a href="/">{SITE.TITLE}</a>
+    <ul class="hidden md:flex ml-auto gap-24 w-fit">
+        <li>
+            <a href="/" class="underline">link1</a>
+        </li>
+        <li>
+            <a href="/" class="underline">link1</a>
+        </li>
+        <li>
+            <a href="/" class="underline">link1</a>
+        </li>
+    </ul>
     <!-- Hamburger (only on mobile) -->
-        <label class="hamburger-menu flex md:hidden ml-auto">
-            <input type="checkbox" />
-        </label>
+    <label class="hamburger-menu flex md:hidden ml-auto">
+        <input type="checkbox" />
+    </label>
     <!-- Hamburger (only on mobile) -->
 
     <!-- Mobile menu overlay (only on mobile) -->
@@ -25,18 +28,22 @@ import { SITE } from "@consts";
         id="mobile-nav-links"
         class="fixed inset-0 z-50 opacity-0 pointer-events-none mt-[var(--h-header)] transition-all"
     >
-    <div class="fixed block inset-0 z-10 mt-[var(--h-header)] opacity-50 pointer-events-none"></div>
-        <ul class="flex fixed right-0 z-20 flex-col gap-10 px-5 py-10 text-2xl w-2/3 h-full">
+        <div
+            class="fixed block inset-0 z-10 mt-[var(--h-header)] opacity-50 pointer-events-none"
+        >
+        </div>
+        <ul
+            class="flex fixed right-0 z-20 flex-col gap-10 px-5 py-10 text-2xl w-2/3 h-full"
+        >
             <a href="/" class="underline">link1</a>
             <a href="/" class="underline">link2</a>
             <a href="/" class="underline">link3</a>
             <div class="h-px w-full bg-white"></div>
         </ul>
-        
     </nav>
     <!-- Mobile menu overlay (only on mobile) -->
 </nav>
 <div class="h-[var(--h-header)]"></div>
 <script>
-    import "@scripts/mobileMenu";
+    import '@scripts/mobileMenu'
 </script>

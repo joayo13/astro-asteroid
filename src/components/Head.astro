@@ -1,9 +1,9 @@
 ---
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 
 interface Props {
-    title: string;
-    description: string;
+    title: string
+    description: string
 }
 ---
 
@@ -30,16 +30,16 @@ interface Props {
         crossorigin="anonymous"
     />
     <script>
-        const elements = document.querySelectorAll(".animate");
+        const elements = document.querySelectorAll('.animate')
         function staggerAnimation() {
             elements.forEach((element, index) => {
                 setTimeout(() => {
-                    element.classList.add("show");
-                }, index * 200);
-            });
+                    element.classList.add('show')
+                }, index * 200)
+            })
         }
-        window.addEventListener("DOMContentLoaded", () => {
-            staggerAnimation();
-        });
+        window.addEventListener('DOMContentLoaded', () => {
+            staggerAnimation()
+        })
     </script>
 </head>
