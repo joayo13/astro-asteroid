@@ -10,8 +10,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
@@ -24,12 +22,17 @@ body {
 }
 
 :root {
-  --bar-width: 60px;
-  --bar-height: 6px;
-  --hamburger-gap: 9px;
-  --hamburger-color: #f6f6f6;
+  /* hamburger variables */
+  --bar-width: 40px;
+  --bar-height: 4px;
+  --hamburger-gap: 7px;
+  --hamburger-color: var(--text-primary);
   --animation-timing: 200ms ease-in-out;
   --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+
+  /* other */
+  --h-header: 5rem;
+  --text-primary: black;
 }
 
 /* inter-regular - latin */
