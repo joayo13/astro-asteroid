@@ -1,21 +1,21 @@
 ---
-import { SITE } from '@consts';
+import { LINKS, SITE } from '@consts';
 ---
 
 <nav
-    class="fixed flex items-center border border-red-500 w-full h-[var(--h-header)] px-10"
+    class="fixed flex items-center border border-red-500 w-full h-[var(--h-header)] md:px-10 px-4"
 >
     <a href="/">{SITE.TITLE}</a>
     <ul class="hidden md:flex ml-auto gap-24 w-fit">
-        <li>
-            <a href="/" class="underline">link1</a>
-        </li>
-        <li>
-            <a href="/" class="underline">link1</a>
-        </li>
-        <li>
-            <a href="/" class="underline">link1</a>
-        </li>
+        {
+            LINKS.map((link) => (
+                <li>
+                    <a href=`${link}` class="underline">
+                        {link}
+                    </a>
+                </li>
+            ))
+        }
     </ul>
     <!-- Hamburger (only on mobile) -->
     <label class="hamburger-menu flex md:hidden ml-auto">
@@ -26,18 +26,24 @@ import { SITE } from '@consts';
     <!-- Mobile menu overlay (only on mobile) -->
     <nav
         id="mobile-nav-links"
-        class="fixed inset-0 z-50 opacity-0 pointer-events-none mt-[var(--h-header)] transition-all"
+        class="fixed border-4 border-red-500 inset-0 z-50 opacity-0 pointer-events-none mt-[var(--h-header)] transition-all"
     >
         <div
             class="fixed block inset-0 z-10 mt-[var(--h-header)] opacity-50 pointer-events-none"
         >
         </div>
         <ul
-            class="flex fixed right-0 z-20 flex-col gap-10 px-5 py-10 text-2xl w-2/3 h-full"
+            class="flex border border-red-500 fixed right-0 z-20 flex-col gap-10 px-5 py-10 text-2xl w-2/3 h-full"
         >
-            <a href="/" class="underline">link1</a>
-            <a href="/" class="underline">link2</a>
-            <a href="/" class="underline">link3</a>
+        {
+            LINKS.map((link) => (
+                <li>
+                    <a href=`${link}` class="underline">
+                        {link}
+                    </a>
+                </li>
+            ))
+        }
             <div class="h-px w-full bg-white"></div>
         </ul>
     </nav>

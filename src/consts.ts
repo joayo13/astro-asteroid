@@ -8,3 +8,5 @@ export const HOME: Metadata = {
 export const SITE: Site = {
     TITLE: 'ABT',
 };
+
+export const LINKS: string[] = ['ABOUT', 'PORTFOLIO', 'CONTACT'];
