@@ -4,6 +4,6 @@ export default {
     plugins: ['prettier-plugin-astro'],
     trailingComma: 'es5',
     tabWidth: 4,
-    semi: false,
+    semi: true,
     singleQuote: true,
-}
+};
