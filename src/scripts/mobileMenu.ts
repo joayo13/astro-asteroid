@@ -6,7 +6,7 @@ const mobileOverlay = document.querySelector(
 ) as HTMLElement;
 
 const toggleMobileOverlay = () => {
-    if (!hamburger.checked) {
+    if (!mobileOverlay.classList.contains('opacity-0')) {
         mobileOverlay.classList.add('pointer-events-none');
         mobileOverlay.classList.add('opacity-0');
         mobileOverlay.classList.remove('no-doc-scroll');
@@ -18,7 +18,7 @@ const toggleMobileOverlay = () => {
 };
 
 hamburger.addEventListener('click', toggleMobileOverlay);
-const mobileLinks = document.querySelectorAll('.mobile-link');
+const mobileLinks = document.querySelectorAll('#mobile-link');
 mobileLinks.forEach((link) => {
     link.addEventListener('click', () => {
         toggleMobileOverlay();
