@@ -3,7 +3,7 @@ import { LINKS, SITE } from '@consts';
 ---
 
 <nav
-    class="fixed z-20 flex items-center w-full h-[var(--h-header)] md:px-10 px-4"
+    class="fixed shadow-sm bg-[var(--bg-secondary)] z-20 flex items-center w-full h-[var(--h-header)] md:px-10 px-4"
 >
     <a href="/">{SITE.TITLE}</a>
     <ul class="hidden md:flex ml-auto gap-24 w-fit">
@@ -29,11 +29,11 @@ import { LINKS, SITE } from '@consts';
         class="fixed inset-0 opacity-0 pointer-events-none mt-[var(--h-header)] transition-all"
     >
         <div
-            class="fixed block bg-stone-950 inset-0 z-10 mt-[var(--h-header)] opacity-50 pointer-events-none"
+            class="fixed block bg-black inset-0 z-10 mt-[var(--h-header)] opacity-50 pointer-events-none"
         >
         </div>
         <ul
-            class="flex fixed z-20 bg-white right-0 flex-col gap-10 px-5 py-10 w-2/3 h-full"
+            class="flex fixed z-20 bg-[var(--bg-primary)] right-0 flex-col gap-10 px-5 py-10 w-2/3 h-full"
         >
         {
             LINKS.map((link) => (
@@ -44,7 +44,7 @@ import { LINKS, SITE } from '@consts';
                 </li>
             ))
         }
-            <div class="h-px w-full bg-white"></div>
+            <div class="h-px w-full"></div>
         </ul>
     </nav>
     <!-- Mobile menu overlay (only on mobile) -->
