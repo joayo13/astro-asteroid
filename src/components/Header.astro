@@ -1,5 +1,6 @@
 ---
 import { LINKS, SITE } from '@consts';
+
 ---
 
 <nav
@@ -9,19 +10,18 @@ import { LINKS, SITE } from '@consts';
     <ul class="hidden md:flex ml-auto gap-24 w-fit">
         {
             LINKS.map((link) => (
-                <li>
-                    <a href=`#${link.toLowerCase()}` class="underline">
+                <li class="group">
+                    <a class="block leading-4" href=`#${link.toLowerCase()}`>
                         {link}
                     </a>
+                    <div class="h-0.5 w-0 group-hover:w-full transition-all bg-[var(--text-secondary)]"></div>
                 </li>
             ))
         }
     </ul>
-    <!-- Hamburger (only on mobile) -->
     <label class="hamburger-menu flex md:hidden ml-auto">
         <input type="checkbox" />
     </label>
-    <!-- Hamburger (only on mobile) -->
 
     <!-- Mobile menu overlay (only on mobile) -->
     <nav
