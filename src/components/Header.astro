@@ -1,6 +1,26 @@
 ---
 import { LINKS, SITE } from '@consts';
 
+let url = Astro.url.pathname.split('/')[1]
+
+function linkIsActive(link: string) {
+    if (url === link) {
+        return true
+    }
+    if (url === '' && link == 'home') {
+        return true
+    }
+    return false
+}
+
+function getHrefFromLinkTitle(link: string) {
+    if (link === 'home') {
+        return '/'
+    }
+    return `/${link}`
+}
+
+
 ---
 
 <nav
@@ -11,10 +31,10 @@ import { LINKS, SITE } from '@consts';
         {
             LINKS.map((link) => (
                 <li class="group">
-                    <a class="block leading-4" href=`#${link.toLowerCase()}`>
+                    <a class="block leading-4" href={`${getHrefFromLinkTitle(link.toLowerCase())}`}>
                         {link}
                     </a>
-                    <div class="h-0.5 w-0 group-hover:w-full transition-all bg-[var(--text-secondary)]"></div>
+                    <div style={linkIsActive(link.toLowerCase()) ? "width: 100%;" : null} class="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--text-primary)]"></div>
                 </li>
             ))
         }
