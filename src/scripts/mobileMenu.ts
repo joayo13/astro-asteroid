@@ -2,7 +2,11 @@ const hamburger = document.querySelector(
     '.hamburger-menu input'
 ) as HTMLInputElement;
 const mobileOverlay = document.querySelector(
-    '#mobile-nav-links'
+    '#mobile-nav-wrapper'
+) as HTMLElement;
+
+const mobileNavLinksContainer = document.querySelector(
+    '#mobile-nav-links-container'
 ) as HTMLElement;
 
 const toggleMobileOverlay = () => {
@@ -10,10 +14,15 @@ const toggleMobileOverlay = () => {
         mobileOverlay.classList.add('pointer-events-none');
         mobileOverlay.classList.add('opacity-0');
         mobileOverlay.classList.remove('no-doc-scroll');
+        mobileNavLinksContainer.classList.add('translate-x-full');
+        mobileNavLinksContainer.classList.remove('translate-x-0');
     } else {
         mobileOverlay.classList.remove('pointer-events-none');
         mobileOverlay.classList.remove('opacity-0');
         mobileOverlay.classList.add('no-doc-scroll');
+
+        mobileNavLinksContainer.classList.remove('translate-x-full');
+        mobileNavLinksContainer.classList.add('translate-x-0');
     }
 };
 

@@ -1,26 +1,24 @@
 ---
 import { LINKS, SITE } from '@consts';
 
-let url = Astro.url.pathname.split('/')[1]
+let url = Astro.url.pathname.split('/')[1];
 
 function linkIsActive(link: string) {
     if (url === link) {
-        return true
+        return true;
     }
     if (url === '' && link == 'home') {
-        return true
+        return true;
     }
-    return false
+    return false;
 }
 
 function getHrefFromLinkTitle(link: string) {
     if (link === 'home') {
-        return '/'
+        return '/';
     }
-    return `/${link}`
+    return `/${link}`;
 }
-
-
 ---
 
 <nav
@@ -31,10 +29,25 @@ function getHrefFromLinkTitle(link: string) {
         {
             LINKS.map((link) => (
                 <li class="group">
-                    <a class="block leading-4" href={`${getHrefFromLinkTitle(link.toLowerCase())}`}>
+                    <a
+                        style={
+                            linkIsActive(link.toLowerCase())
+                                ? 'color: var(--text-primary)'
+                                : null
+                        }
+                        class="hover:text-[var(--text-secondary)] transition-colors"
+                        href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
+                    >
                         {link}
                     </a>
-                    <div style={linkIsActive(link.toLowerCase()) ? "width: 100%;" : null} class="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--text-primary)]"></div>
+                    <div
+                        style={
+                            linkIsActive(link.toLowerCase())
+                                ? 'width: 100%;'
+                                : null
+                        }
+                        class=" h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--text-primary)]"
+                    />
                 </li>
             ))
         }
@@ -45,7 +58,7 @@ function getHrefFromLinkTitle(link: string) {
 
     <!-- Mobile menu overlay (only on mobile) -->
     <nav
-        id="mobile-nav-links"
+        id="mobile-nav-wrapper"
         class="fixed inset-0 opacity-0 pointer-events-none mt-[var(--h-header)] transition-all"
     >
         <div
@@ -53,17 +66,34 @@ function getHrefFromLinkTitle(link: string) {
         >
         </div>
         <ul
-            class="flex fixed z-20 bg-[var(--bg-primary)] right-0 flex-col gap-10 px-5 py-10 w-2/3 h-full"
+            id="mobile-nav-links-container"
+            class="flex fixed z-20 bg-[var(--bg-primary)] right-0 translate-x-full transition-transform flex-col gap-10 px-5 py-10 w-2/3 h-full"
         >
-        {
-            LINKS.map((link) => (
-                <li>
-                    <a id="mobile-link" href=`#${link.toLowerCase()}` class="underline">
-                        {link}
-                    </a>
-                </li>
-            ))
-        }
+            {
+                LINKS.map((link) => (
+                    <li class="group max-w-min">
+                        <a
+                            style={
+                                linkIsActive(link.toLowerCase())
+                                    ? 'color: var(--text-primary)'
+                                    : null
+                            }
+                            class="hover:text-[var(--text-secondary)] transition-colors"
+                            href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
+                        >
+                            {link}
+                        </a>
+                        <div
+                            style={
+                                linkIsActive(link.toLowerCase())
+                                    ? 'width: 100%;'
+                                    : null
+                            }
+                            class=" h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--text-primary)]"
+                        />
+                    </li>
+                ))
+            }
             <div class="h-px w-full"></div>
         </ul>
     </nav>
