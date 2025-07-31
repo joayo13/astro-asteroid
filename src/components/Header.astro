@@ -67,7 +67,7 @@ function getHrefFromLinkTitle(link: string) {
         </div>
         <ul
             id="mobile-nav-links-container"
-            class="flex fixed z-20 bg-[var(--bg-primary)] right-0 translate-x-full transition-transform flex-col gap-10 px-5 py-10 w-2/3 h-full"
+            class="flex fixed z-20 bg-[var(--bg-primary)] right-0 translate-x-full transition-transform duration-300 flex-col gap-10 px-5 py-10 w-2/3 h-full"
         >
             {
                 LINKS.map((link) => (
@@ -78,7 +78,7 @@ function getHrefFromLinkTitle(link: string) {
                                     ? 'color: var(--text-primary)'
                                     : null
                             }
-                            class="hover:text-[var(--text-secondary)] transition-colors"
+                            class="hover:text-[var(--text-secondary)] transition-colors duration-300"
                             href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
                         >
                             {link}
@@ -89,7 +89,7 @@ function getHrefFromLinkTitle(link: string) {
                                     ? 'width: 100%;'
                                     : null
                             }
-                            class=" h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--text-primary)]"
+                            class=" h-0.5 w-0 group-hover:w-full transition-all duration-300 bg-[var(--text-primary)]"
                         />
                     </li>
                 ))
