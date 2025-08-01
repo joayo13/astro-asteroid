@@ -1,9 +1,5 @@
 @import 'tailwindcss';
 
-@theme {
-    --color-nav: 'red';
-}
-
 *,
 *::after,
 *::before {

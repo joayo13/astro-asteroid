@@ -9,4 +9,4 @@ export const SITE: Site = {
     TITLE: 'ABT',
 };
 
-export const LINKS: string[] = ['HOME', 'ABOUT', 'PORTFOLIO', 'CONTACT'];
+export const LINKS: string[] = ['Home', 'About', 'Portfolio', 'Contact'];
