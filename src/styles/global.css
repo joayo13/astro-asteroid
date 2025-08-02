@@ -34,6 +34,11 @@ body {
     --h-header: 5rem;
     --text-primary: #171717;
     --text-secondary: rgb(39, 96, 134);
+
+    --nav-text-primary: #f4f4f4;
+    --nav-text-secondary: #bdffb7;
+    --nav-bg-primary: #1c832d;
+
     --bg-primary: #f4f4f4;
     --bg-secondary: #dddddd;
 }

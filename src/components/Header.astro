@@ -22,7 +22,7 @@ function getHrefFromLinkTitle(link: string) {
 ---
 
 <nav
-    class="fixed shadow-sm bg-[var(--bg-secondary)] z-20 flex items-center w-full h-[var(--h-header)] md:px-10 px-4"
+    class="fixed text-[var(--nav-text-primary)] shadow-sm bg-[var(--nav-bg-primary)] z-20 flex items-center w-full h-[var(--h-header)] md:px-10 px-4"
 >
     <a href="/">{SITE.TITLE}</a>
     <ul class="hidden md:flex ml-auto gap-24 w-fit">
@@ -32,10 +32,10 @@ function getHrefFromLinkTitle(link: string) {
                     <a
                         style={
                             linkIsActive(link.toLowerCase())
-                                ? 'color: var(--text-primary)'
+                                ? 'color: var(--nav-text-primary)'
                                 : null
                         }
-                        class="hover:text-[var(--text-secondary)] transition-colors"
+                        class="hover:text-[var(--nav-text-primary)] transition-colors"
                         href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
                     >
                         {link}
@@ -46,7 +46,7 @@ function getHrefFromLinkTitle(link: string) {
                                 ? 'width: 100%;'
                                 : null
                         }
-                        class=" h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--text-primary)]"
+                        class=" h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--nav-text-primary)]"
                     />
                 </li>
             ))
@@ -67,7 +67,7 @@ function getHrefFromLinkTitle(link: string) {
         </div>
         <ul
             id="mobile-nav-links-container"
-            class="flex fixed z-20 bg-[var(--bg-primary)] right-0 translate-x-full transition-transform duration-300 flex-col gap-10 px-5 py-10 w-2/3 h-full"
+            class="flex fixed z-20 bg-[var(--nav-bg-primary)] right-0 translate-x-full transition-transform duration-300 flex-col gap-10 px-5 py-10 w-2/3 h-full"
         >
             {
                 LINKS.map((link) => (
@@ -75,10 +75,10 @@ function getHrefFromLinkTitle(link: string) {
                         <a
                             style={
                                 linkIsActive(link.toLowerCase())
-                                    ? 'color: var(--text-primary)'
+                                    ? 'color: var(--nav-text-primary)'
                                     : null
                             }
-                            class="hover:text-[var(--text-secondary)] transition-colors duration-300"
+                            class="hover:text-[var(--nav-text-primary)] transition-colors duration-300"
                             href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
                         >
                             {link}
@@ -89,7 +89,7 @@ function getHrefFromLinkTitle(link: string) {
                                     ? 'width: 100%;'
                                     : null
                             }
-                            class=" h-0.5 w-0 group-hover:w-full transition-all duration-300 bg-[var(--text-primary)]"
+                            class=" h-0.5 w-0 group-hover:w-full transition-all duration-300 bg-[var(--nav-text-primary)]"
                         />
                     </li>
                 ))
