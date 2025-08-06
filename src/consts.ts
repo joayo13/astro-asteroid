@@ -1,4 +1,4 @@
-import type { Metadata, Site } from '@types';
+import type { Metadata, NavLink, Site } from '@types';
 
 export const HOME: Metadata = {
     TITLE: 'Home',
@@ -6,7 +6,12 @@ export const HOME: Metadata = {
 };
 
 export const SITE: Site = {
-    TITLE: 'ABT',
+    TITLE: 'Astro Base Template',
 };
 
-export const LINKS: string[] = ['Home', 'About', 'Portfolio', 'Contact'];
+export const LINKS: NavLink[] = [
+    { TITLE: 'Home' },
+    { TITLE: 'About' },
+    { TITLE: 'Portfolio', SUBLINKS: [{ TITLE: 'Gallery' }, { TITLE: 'Blah' }] },
+    { TITLE: 'Contact' },
+];

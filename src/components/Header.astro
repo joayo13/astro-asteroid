@@ -1,106 +1,105 @@
 ---
 import { LINKS, SITE } from '@consts';
 
-let url = Astro.url.pathname.split('/')[1];
-
-function linkIsActive(link: string) {
-    if (url === link) {
-        return true;
-    }
-    if (url === '' && link == 'home') {
-        return true;
-    }
-    return false;
-}
-
-function getHrefFromLinkTitle(link: string) {
-    if (link === 'home') {
+function slugify(text: string) {
+    if (text.toLowerCase() === 'home') {
         return '/';
     }
-    return `/${link}`;
+    return '/' + text.toLowerCase().replace(/\s+/g, '-');
 }
 ---
 
-<nav
-    class="fixed text-[var(--nav-text-primary)] shadow-sm bg-[var(--nav-bg-primary)] z-20 flex items-center w-full h-[var(--h-header)] md:px-10 px-4"
->
-    <a href="/">{SITE.TITLE}</a>
-    <ul class="hidden md:flex ml-auto gap-24 w-fit">
-        {
-            LINKS.map((link) => (
-                <li class="group">
-                    <a
-                        style={
-                            linkIsActive(link.toLowerCase())
-                                ? 'color: var(--nav-text-primary)'
-                                : null
-                        }
-                        class="hover:text-[var(--nav-text-primary)] transition-colors"
-                        href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
-                    >
-                        {link}
-                    </a>
-                    <div
-                        style={
-                            linkIsActive(link.toLowerCase())
-                                ? 'width: 100%;'
-                                : null
-                        }
-                        class=" h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-[var(--nav-text-primary)]"
-                    />
-                </li>
-            ))
-        }
-    </ul>
-    <label class="hamburger-menu flex md:hidden ml-auto">
-        <input type="checkbox" />
-    </label>
-
-    <!-- Mobile menu overlay (only on mobile) -->
-    <nav
-        id="mobile-nav-wrapper"
-        class="fixed inset-0 opacity-0 pointer-events-none mt-[var(--h-header)] transition-all"
-    >
-        <div
-            class="fixed block bg-black inset-0 z-10 mt-[var(--h-header)] opacity-50 pointer-events-none"
-        >
+<div class="navbar z-50 bg-base-100 shadow-sm">
+    <!-- Start -->
+    <div class="navbar-start">
+        <!-- Mobile Dropdown -->
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h8m-8 6h16"></path>
+                </svg>
+            </div>
+            <ul
+                tabindex="0"
+                class="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+                {
+                    LINKS.map((link) =>
+                        link.SUBLINKS ? (
+                            <li>
+                                <details>
+                                    <summary>{link.TITLE}</summary>
+                                    <ul class="p-2">
+                                        {link.SUBLINKS.map((sublink) => (
+                                            <li>
+                                                <a
+                                                    href={slugify(
+                                                        sublink.TITLE
+                                                    )}
+                                                >
+                                                    {sublink.TITLE}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </details>
+                            </li>
+                        ) : (
+                            <li>
+                                <a href={slugify(link.TITLE)}>{link.TITLE}</a>
+                            </li>
+                        )
+                    )
+                }
+            </ul>
         </div>
-        <ul
-            id="mobile-nav-links-container"
-            class="flex fixed z-20 bg-[var(--nav-bg-primary)] right-0 translate-x-full transition-transform duration-300 flex-col gap-10 px-5 py-10 w-2/3 h-full"
-        >
+
+        <!-- Brand Title -->
+        <a class="text-xl" href="/">{SITE.TITLE}</a>
+    </div>
+
+    <!-- Center (Desktop Menu) -->
+    <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
             {
-                LINKS.map((link) => (
-                    <li class="group max-w-min">
-                        <a
-                            style={
-                                linkIsActive(link.toLowerCase())
-                                    ? 'color: var(--nav-text-primary)'
-                                    : null
-                            }
-                            class="hover:text-[var(--nav-text-primary)] transition-colors duration-300"
-                            href={`${getHrefFromLinkTitle(link.toLowerCase())}`}
-                        >
-                            {link}
-                        </a>
-                        <div
-                            style={
-                                linkIsActive(link.toLowerCase())
-                                    ? 'width: 100%;'
-                                    : null
-                            }
-                            class=" h-0.5 w-0 group-hover:w-full transition-all duration-300 bg-[var(--nav-text-primary)]"
-                        />
-                    </li>
-                ))
+                LINKS.map((link) =>
+                    link.SUBLINKS ? (
+                        <li>
+                            <details>
+                                <summary>{link.TITLE}</summary>
+                                <ul class="p-2">
+                                    {link.SUBLINKS.map((sublink) => (
+                                        <li>
+                                            <a href={slugify(sublink.TITLE)}>
+                                                {sublink.TITLE}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </details>
+                        </li>
+                    ) : (
+                        <li>
+                            <a href={slugify(link.TITLE)}>{link.TITLE}</a>
+                        </li>
+                    )
+                )
             }
-            <div class="h-px w-full"></div>
         </ul>
-    </nav>
-    <!-- Mobile menu overlay (only on mobile) -->
-</nav>
-<!-- spacer for spacing content down -->
-<div class="h-[var(--h-header)]"></div>
-<script>
-    import '@scripts/mobileMenu';
-</script>
+    </div>
+
+    <!-- End -->
+    <div class="navbar-end">
+        <a class="btn">Contact Us</a>
+    </div>
+</div>

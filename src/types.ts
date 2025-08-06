@@ -5,3 +5,8 @@ export type Metadata = {
 export type Site = {
     TITLE: string;
 };
+
+export type NavLink = {
+    TITLE: string;
+    SUBLINKS?: NavLink[];
+};
