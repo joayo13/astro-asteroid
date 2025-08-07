@@ -6,5 +6,30 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact" description="Example Contact Form">
-    <h1 class="text-9xl text-center">Contact</h1>
+    <div class="hero bg-base-200 min-h-screen">
+        <div class="hero-content flex-col lg:flex-row-reverse lg:gap-20">
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl font-bold">Contact Us!</h1>
+                <p class="py-6 max-w-2xl">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                    assumenda excepturi exercitationem quasi. In deleniti eaque
+                    aut repudiandae et a id nisi.
+                </p>
+            </div>
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label">Name</label>
+                        <input type="text" class="input" placeholder="Name" />
+                        <label class="label">Email</label>
+                        <input type="email" class="input" placeholder="Email" />
+                        <label class="label">Message</label>
+                        <textarea class="textarea" placeholder="Message"
+                        ></textarea>
+                        <button class="btn btn-neutral mt-4">Login</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
 </BaseLayout>

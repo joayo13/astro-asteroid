@@ -6,7 +6,7 @@ export const HOME: Metadata = {
 };
 
 export const SITE: Site = {
-    TITLE: 'Astro Base Template',
+    TITLE: 'Asteroid',
 };
 
 export const LINKS: NavLink[] = [

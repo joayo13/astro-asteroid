@@ -10,7 +10,31 @@ interface Props {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+        // ☝️ This script prevent the FART effect.
+        if (localStorage.getItem('theme') === null) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else
+            document.documentElement.setAttribute(
+                'data-theme',
+                localStorage.getItem('theme')
+            );
+        // "theme" LocalStorage value is set by the package to remember user preference.
+        // The value is checked and applyed before rendering anything.
+        // Sync theme-controller checkbox to match the saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkbox = document.querySelector('.theme-controller');
+            const theme = localStorage.getItem('theme');
+
+            if (!checkbox) return;
+            checkbox.checked = theme === 'dark'; // true if dark, false if light
+        });
+    </script>
+    <script>
+        import { themeChange } from 'theme-change';
+        themeChange();
+        // 👆 you could import the CDN directly instead of these two lines
+    </script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -29,17 +53,4 @@ interface Props {
         type="font/woff2"
         crossorigin="anonymous"
     />
-    <script>
-        const elements = document.querySelectorAll('.animate');
-        function staggerAnimation() {
-            elements.forEach((element, index) => {
-                setTimeout(() => {
-                    element.classList.add('show');
-                }, index * 200);
-            });
-        }
-        window.addEventListener('DOMContentLoaded', () => {
-            staggerAnimation();
-        });
-    </script>
 </head>

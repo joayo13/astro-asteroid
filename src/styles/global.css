@@ -3,6 +3,8 @@
 @theme {
     --default-font-family: 'Inter', sans-serif;
 }
+@import 'tailwindcss';
+/* make sure theme switcher is wired up for the below themes */
 @plugin "daisyui" {
     themes:
         light --default,
