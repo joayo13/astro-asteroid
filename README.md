@@ -14,8 +14,8 @@ A minimal, fast, and modern website built with [Astro](https://astro.build/) and
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/joayo13/astro-pico.git
-cd astro-pico
+git clone https://github.com/joayo13/astro-asteroid.git
+cd astro-asteroid
 ````
 
 ### 2. Install dependencies
