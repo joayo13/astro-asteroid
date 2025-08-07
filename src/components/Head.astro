@@ -21,14 +21,6 @@ interface Props {
             );
         // "theme" LocalStorage value is set by the package to remember user preference.
         // The value is checked and applyed before rendering anything.
-        // Sync theme-controller checkbox to match the saved theme on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkbox = document.querySelector('.theme-controller');
-            const theme = localStorage.getItem('theme');
-
-            if (!checkbox) return;
-            checkbox.checked = theme === 'dark'; // true if dark, false if light
-        });
     </script>
     <script>
         import { themeChange } from 'theme-change';
