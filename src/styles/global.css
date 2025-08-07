@@ -6,6 +6,7 @@
 @import 'tailwindcss';
 /* make sure theme switcher is wired up for the below themes */
 @plugin "daisyui" {
-    themes: acid --default;
-    /* dark --prefersdark; */
+    themes:
+        light --default,
+        dark --prefersdark;
 }
