@@ -4,10 +4,11 @@ A minimal, fast, and modern website built with [Astro](https://astro.build/) and
 
 ## ✨ Features
 
-- ⚡ Built with Astro — blazing fast static rendering
-- 📄 Clean, semantic HTML
-- ♿ Accessible and responsive layout
-- 🚀 Deploy-ready for Netlify
+- Built with Astro — blazing fast static rendering
+- Clean, semantic HTML
+- Accessible and responsive layout
+- Deploy-ready for Netlify
+- Basic formatting rules with Prettier Astro Plugin
 
 ## 🚀 Getting Started
 
