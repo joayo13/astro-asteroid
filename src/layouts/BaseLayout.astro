@@ -3,6 +3,7 @@ import Head from '@components/Head.astro';
 import '@styles/global.css';
 import { SITE } from '@consts';
 import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 
 type Props = {
     title: string;
@@ -20,5 +21,6 @@ const { title, description } = Astro.props;
         <main>
             <slot />
         </main>
+        <Footer />
     </body>
 </html>
