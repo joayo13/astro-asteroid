@@ -10,7 +10,7 @@ interface Props {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <script is:inline>
+    <!-- <script is:inline>
         // ☝️ This script prevent the FART effect.
         if (localStorage.getItem('theme') === null) {
             document.documentElement.setAttribute('data-theme', 'light');
@@ -26,7 +26,7 @@ interface Props {
         import { themeChange } from 'theme-change';
         themeChange();
         // 👆 you could import the CDN directly instead of these two lines
-    </script>
+    </script> -->
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="title" content={title} />
