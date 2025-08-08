@@ -1,26 +1,23 @@
 ---
 import { LINKS } from '@consts';
-function slugify(text: string) {
-    if (text.toLowerCase() === 'home') {
-        return '/';
-    }
-    return '/' + text.toLowerCase().replace(/\s+/g, '-');
-}
+import '../styles/hamburger.css';
+import slugify from '@utils/slugify';
 ---
 
 <label class="hamburger-menu flex md:hidden">
     <input type="checkbox" />
 </label>
 
-<nav
-    id="mobile-nav-links"
-    class="fixed inset-0 right-0 translate-x-full mt-[var(--h-header)] duration-300 ease-in-out"
->
+<nav id="mobile-nav-links" class="fixed inset-0 right-0 mt-[var(--h-header)]">
     <div
-        class="fixed block bg-neutral inset-0 z-10 opacity-50 pointer-events-none"
+        id="mobile-nav-underlay"
+        class="fixed duration-300 ease-in-out block bg-neutral opacity-0 inset-0 z-10 mt-[var(--h-header)] pointer-events-none"
     >
     </div>
-    <ul class="fixed menu bg-base-200 z-20 right-0 w-1/2 h-full">
+    <ul
+        id="mobile-nav-overlay"
+        class="fixed menu gap-4 duration-300 translate-x-full ease-in-out bg-base-200 z-20 right-0 w-1/2 h-full"
+    >
         {
             LINKS.map((link) =>
                 link.SUBLINKS ? (
@@ -29,7 +26,7 @@ function slugify(text: string) {
                             <summary>{link.TITLE}</summary>
                             <ul class="p-2">
                                 {link.SUBLINKS.map((sublink) => (
-                                    <li>
+                                    <li class="mt-4">
                                         <a href={slugify(sublink.TITLE)}>
                                             {sublink.TITLE}
                                         </a>
@@ -48,103 +45,31 @@ function slugify(text: string) {
         <div class="h-px w-full bg-base-content"></div>
     </ul>
 </nav>
-<style>
-    :root {
-        /* hamburger variables */
-        --bar-width: 25px;
-        --bar-height: 3px;
-        --hamburger-gap: 5px;
-        --hamburger-color: currentColor;
-        --animation-timing: 200ms ease-out;
-        --hamburger-height: calc(
-            var(--bar-height) * 3 + var(--hamburger-gap) * 2
-        );
-
-        --h-header: 4rem;
-    }
-
-    .hamburger-menu {
-        --x-width: calc(var(--hamburger-height) * 1.41421356237);
-        flex-direction: column;
-        gap: var(--hamburger-gap);
-        width: var(--x-width);
-        z-index: 2;
-        cursor: pointer;
-    }
-
-    .hamburger-menu:has(input:focus-visible)::before,
-    .hamburger-menu:has(input:focus-visible)::after,
-    .hamburger-menu input:focus-visible {
-        border: 1px solid var(--hamburger-color);
-        box-shadow: 0 0 0 1px var(--hamburger-color);
-    }
-
-    .hamburger-menu::before,
-    .hamburger-menu::after,
-    .hamburger-menu input {
-        content: '';
-        width: var(--bar-width);
-        height: var(--bar-height);
-        background-color: var(--hamburger-color);
-        border-radius: 1em;
-        transform-origin: left center;
-        transition:
-            opacity var(--animation-timing),
-            width var(--animation-timing),
-            rotate var(--animation-timing),
-            translate var(--animation-timing),
-            background-color var(--animation-timing);
-    }
-
-    .hamburger-menu input {
-        appearance: none;
-        padding: 0;
-        margin: 0;
-        outline: none;
-        pointer-events: none;
-        width: 55%;
-    }
-
-    .hamburger-menu:has(input:checked)::before {
-        rotate: 45deg;
-        width: var(--x-width);
-        translate: 0 calc(var(--bar-height) / -2);
-    }
-
-    .hamburger-menu:has(input:checked)::after {
-        rotate: -45deg;
-        width: var(--x-width);
-        translate: 0 calc(var(--bar-height) / 2);
-    }
-
-    .hamburger-menu input:checked {
-        opacity: 0;
-        width: 0;
-    }
-</style>
 
 <script>
     const hamburger = document.querySelector(
         '.hamburger-menu input'
     ) as HTMLInputElement;
-    const mobileMenu = document.querySelector(
-        '#mobile-nav-links'
+    const mobileMenuOverlay = document.querySelector(
+        '#mobile-nav-overlay'
     ) as HTMLElement;
     const mobileMenuUnderlay = document.querySelector(
         '#mobile-nav-underlay'
     ) as HTMLElement;
 
     const toggleMobileMenu = () => {
-        if (mobileMenu.classList.contains('translate-x-0')) {
-            mobileMenu.classList.add('pointer-events-none');
-            mobileMenu.classList.remove('no-doc-scroll');
-            mobileMenu.classList.add('translate-x-full');
-            mobileMenu.classList.remove('translate-x-0');
+        if (mobileMenuOverlay.classList.contains('translate-x-0')) {
+            mobileMenuOverlay.classList.remove('no-doc-scroll');
+            mobileMenuOverlay.classList.add('translate-x-full');
+            mobileMenuOverlay.classList.remove('translate-x-0');
+            mobileMenuUnderlay.classList.add('opacity-0');
+            mobileMenuUnderlay.classList.remove('opacity-50');
         } else {
-            mobileMenu.classList.remove('pointer-events-none');
-            mobileMenu.classList.add('no-doc-scroll');
-            mobileMenu.classList.remove('translate-x-full');
-            mobileMenu.classList.add('translate-x-0');
+            mobileMenuOverlay.classList.add('no-doc-scroll');
+            mobileMenuOverlay.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.add('translate-x-0');
+            mobileMenuUnderlay.classList.remove('opacity-0');
+            mobileMenuUnderlay.classList.add('opacity-50');
         }
     };
 

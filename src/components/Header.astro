@@ -2,13 +2,7 @@
 import { LINKS, SITE } from '@consts';
 import ThemeController from '@components/ThemeController.astro';
 import HamburgerMenu from '@components/HamburgerMenu.astro';
-
-function slugify(text: string) {
-    if (text.toLowerCase() === 'home') {
-        return '/';
-    }
-    return '/' + text.toLowerCase().replace(/\s+/g, '-');
-}
+import slugify from '@utils/slugify';
 ---
 
 <nav class="navbar fixed z-50 bg-base-100 transition-transform shadow">
@@ -95,6 +89,24 @@ function slugify(text: string) {
     import { themeChange } from 'theme-change';
     themeChange();
     // 👆 you could import the CDN directly instead of these two lines
+</script>
+<script is:inline>
+    let lastScroll = 0;
+    const nav = document.querySelector('.navbar');
+    if (screen.width < 1028)
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // scrolling down
+                nav?.classList.add('translate-y-[-100%]');
+            } else {
+                // scrolling up
+                nav?.classList.remove('translate-y-[-100%]');
+            }
+
+            lastScroll = currentScroll;
+        });
 </script>
 
 <style>
