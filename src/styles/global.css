@@ -10,3 +10,7 @@
         light --default,
         dark --prefersdark;
 }
+
+:root:has(.no-doc-scroll) {
+    overflow: hidden;
+}
