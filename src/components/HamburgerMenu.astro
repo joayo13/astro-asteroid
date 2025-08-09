@@ -8,15 +8,15 @@ import slugify from '@utils/slugify';
     <input type="checkbox" />
 </label>
 
-<nav id="mobile-nav-links" class="fixed inset-0 right-0 mt-[var(--h-header)]">
-    <div
+<nav id="mobile-nav-links" class="fixed right-0 mt-[var(--h-header)]">
+    <button
         id="mobile-nav-underlay"
         class="fixed duration-300 ease-in-out block bg-neutral opacity-0 inset-0 z-10 mt-[var(--h-header)] pointer-events-none"
     >
-    </div>
+    </button>
     <ul
         id="mobile-nav-overlay"
-        class="fixed menu gap-4 duration-300 translate-x-full ease-in-out bg-base-200 z-20 right-0 w-1/2 h-full"
+        class="fixed menu duration-300 translate-x-full ease-in-out bg-base-200 z-20 right-0 w-1/2 h-full"
     >
         {
             LINKS.map((link) =>
@@ -63,12 +63,14 @@ import slugify from '@utils/slugify';
             mobileMenuOverlay.classList.add('translate-x-full');
             mobileMenuOverlay.classList.remove('translate-x-0');
             mobileMenuUnderlay.classList.add('opacity-0');
+            mobileMenuUnderlay.classList.add('pointer-events-none');
             mobileMenuUnderlay.classList.remove('opacity-50');
         } else {
             mobileMenuOverlay.classList.add('no-doc-scroll');
             mobileMenuOverlay.classList.remove('translate-x-full');
             mobileMenuOverlay.classList.add('translate-x-0');
             mobileMenuUnderlay.classList.remove('opacity-0');
+            mobileMenuUnderlay.classList.remove('pointer-events-none');
             mobileMenuUnderlay.classList.add('opacity-50');
         }
     };
@@ -80,23 +82,39 @@ import slugify from '@utils/slugify';
             toggleMobileMenu();
         });
     });
+    mobileMenuUnderlay.addEventListener('click', () => {
+        toggleMobileMenu();
+    });
 </script>
 
 <script is:inline>
     let lastScroll = 0;
+    let scrollUpCounter = 0;
+    let scrollDownCounter = 0;
+    const maxScrollAmount = 5;
+
     const nav = document.querySelector('.navbar');
     if (screen.width < 1028)
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-
-            if (currentScroll > lastScroll && currentScroll > 100) {
+            if (currentScroll > lastScroll) {
                 // scrolling down
-                nav?.classList.add('translate-y-[-100%]');
-            } else {
-                // scrolling up
-                nav?.classList.remove('translate-y-[-100%]');
+                if (
+                    scrollDownCounter >= maxScrollAmount &&
+                    currentScroll > 150
+                ) {
+                    nav?.classList.add('translate-y-[-100%]');
+                    scrollUpCounter = 0;
+                }
+                scrollDownCounter += 1;
             }
-
+            if (currentScroll < lastScroll) {
+                if (scrollUpCounter >= maxScrollAmount) {
+                    nav?.classList.remove('translate-y-[-100%]');
+                    scrollDownCounter = 0;
+                }
+                scrollUpCounter += 1;
+            }
             lastScroll = currentScroll;
         });
 </script>
