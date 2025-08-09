@@ -56,21 +56,36 @@ import slugify from '@utils/slugify';
     themeChange();
     // 👆 you could import the CDN directly instead of these two lines
 </script>
-<script is:inline>
+<script>
     let lastScroll = 0;
+    let scrollUpCounter = 0;
+    let scrollDownCounter = 0;
+    const maxScrollAmount = 10;
+
     const nav = document.querySelector('.navbar');
     if (screen.width < 1028)
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-
-            if (currentScroll > lastScroll && currentScroll > 100) {
+            if (currentScroll > lastScroll) {
                 // scrolling down
-                nav?.classList.add('translate-y-[-100%]');
-            } else {
-                // scrolling up
-                nav?.classList.remove('translate-y-[-100%]');
+                if (
+                    scrollDownCounter >= maxScrollAmount &&
+                    currentScroll > 150
+                ) {
+                    nav?.classList.add('translate-y-[-100%]');
+                    scrollUpCounter = 0;
+                    scrollDownCounter = 0;
+                }
+                scrollDownCounter += 1;
             }
-
+            if (currentScroll < lastScroll) {
+                if (scrollUpCounter >= maxScrollAmount) {
+                    nav?.classList.remove('translate-y-[-100%]');
+                    scrollUpCounter = 0;
+                    scrollDownCounter = 0;
+                }
+                scrollUpCounter += 1;
+            }
             lastScroll = currentScroll;
         });
 </script>

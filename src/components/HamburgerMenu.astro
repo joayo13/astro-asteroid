@@ -87,35 +87,3 @@ import slugify from '@utils/slugify';
         toggleMobileMenu();
     });
 </script>
-
-<script is:inline>
-    let lastScroll = 0;
-    let scrollUpCounter = 0;
-    let scrollDownCounter = 0;
-    const maxScrollAmount = 5;
-
-    const nav = document.querySelector('.navbar');
-    if (screen.width < 1028)
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > lastScroll) {
-                // scrolling down
-                if (
-                    scrollDownCounter >= maxScrollAmount &&
-                    currentScroll > 150
-                ) {
-                    nav?.classList.add('translate-y-[-100%]');
-                    scrollUpCounter = 0;
-                }
-                scrollDownCounter += 1;
-            }
-            if (currentScroll < lastScroll) {
-                if (scrollUpCounter >= maxScrollAmount) {
-                    nav?.classList.remove('translate-y-[-100%]');
-                    scrollDownCounter = 0;
-                }
-                scrollUpCounter += 1;
-            }
-            lastScroll = currentScroll;
-        });
-</script>
