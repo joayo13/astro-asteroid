@@ -79,7 +79,7 @@ import slugify from '@utils/slugify';
                 scrollDownCounter += 1;
             }
             if (currentScroll < lastScroll) {
-                if (scrollUpCounter >= maxScrollAmount) {
+                if (scrollUpCounter >= maxScrollAmount || currentScroll < 150) {
                     nav?.classList.remove('translate-y-[-100%]');
                     scrollUpCounter = 0;
                     scrollDownCounter = 0;
