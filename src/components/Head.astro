@@ -11,6 +11,39 @@ interface Props {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+        // Prevent the FART effect (Flash of incorrect theme/icon)
+        const savedTheme = localStorage.getItem('theme');
+
+        const prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+        ).matches;
+        const effectiveTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+        // Apply the theme early
+        document.documentElement.setAttribute('data-theme', effectiveTheme);
+
+        // Sync checkbox state based on effective theme
+        const checkboxSetter = () => {
+            const themeController = document.getElementById(
+                'themeControllerWrapper'
+            );
+            const themeControllerCheckbox =
+                document.querySelector('.theme-controller');
+
+            if (themeControllerCheckbox) {
+                themeControllerCheckbox.checked = effectiveTheme === 'dark';
+                setTimeout(() => {
+                    // this will prevent flash of unstyled icon, remove no-anim class we applied to theme controller
+                    themeController?.classList.remove('no-anim');
+                }, 100);
+            } else {
+                requestAnimationFrame(checkboxSetter);
+            }
+        };
+
+        checkboxSetter();
+    </script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="title" content={title} />

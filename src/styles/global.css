@@ -28,3 +28,8 @@
         transition-delay: -1ms !important;
     }
 }
+
+.no-anim * {
+    transition: none !important;
+    transform: none !important;
+}
