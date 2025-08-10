@@ -4,19 +4,12 @@ import '../styles/hamburger.css';
 import slugify from '@utils/slugify';
 ---
 
-<label class="hamburger-menu flex md:hidden">
-    <input type="checkbox" />
-</label>
-
-<nav id="mobile-nav-links" class="fixed right-0 mt-[var(--h-header)]">
-    <button
-        id="mobile-nav-underlay"
-        class="fixed duration-300 ease-in-out block bg-neutral opacity-0 inset-0 z-10 mt-[var(--h-header)] pointer-events-none"
-    >
-    </button>
+<div class="dropdown dropdown-center">
+    <div tabindex="0" role="checkbox" class="hamburger-menu flex md:hidden">
+        <input type="checkbox" />
+    </div>
     <ul
-        id="mobile-nav-overlay"
-        class="fixed pt-4 px-2 py-0 menu menu-xl duration-300 translate-x-full ease-in-out bg-base-200 z-20 right-0 w-1/2 h-full"
+        class="dropdown-content menu menu-xl bg-base-100 rounded-box z-1 mt-6 w-52 p-4 shadow"
     >
         {
             LINKS.map((link) =>
@@ -42,9 +35,8 @@ import slugify from '@utils/slugify';
                 )
             )
         }
-        <div class="h-px w-full mt-4 bg-base-content opacity-50"></div>
     </ul>
-</nav>
+</div>
 
 <script>
     const hamburger = document.querySelector(
