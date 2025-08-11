@@ -1,7 +1,6 @@
 ---
 import { LINKS, SITE } from '@consts';
 import ThemeController from '@components/ThemeController.astro';
-import HamburgerMenu from '@components/HamburgerMenu.astro';
 import slugify from '@utils/slugify';
 ---
 
@@ -43,10 +42,60 @@ import slugify from '@utils/slugify';
     </nav>
 
     <!-- End -->
-    <div class="navbar-end gap-8">
+    <div class="navbar-end gap-4">
         <ThemeController />
+        <div class="dropdown dropdown-bottom dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost p-0 lg:hidden">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h8m-8 6h16"></path>
+                </svg>
+            </div>
+
+            <ul
+                tabindex="0"
+                class="menu menu-xl dropdown-content bg-base-100 rounded-b-box mt-3 -right-2 z-1 w-screen shadow"
+            >
+                {
+                    LINKS.map((link) =>
+                        link.SUBLINKS ? (
+                            <li>
+                                <details>
+                                    <summary>{link.TITLE}</summary>
+                                    <ul class="p-2">
+                                        {link.SUBLINKS.map((sublink) => (
+                                            <li>
+                                                <a
+                                                    href={slugify(
+                                                        sublink.TITLE
+                                                    )}
+                                                >
+                                                    {sublink.TITLE}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </details>
+                            </li>
+                        ) : (
+                            <li>
+                                <a href={slugify(link.TITLE)}>{link.TITLE}</a>
+                            </li>
+                        )
+                    )
+                }
+            </ul>
+        </div>
         <a class="btn hidden md:inline-flex" href="/contact">Contact Us</a>
-        <HamburgerMenu />
     </div>
 </nav>
 <div class="h-[var(--h-header)] bg-base-200"></div>
