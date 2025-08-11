@@ -36,7 +36,7 @@ interface Props {
                 setTimeout(() => {
                     // this will prevent flash of unstyled icon, remove no-anim class we applied to theme controller
                     themeController?.classList.remove('no-anim');
-                }, 100);
+                }, 0);
             } else {
                 requestAnimationFrame(checkboxSetter);
             }
@@ -44,6 +44,7 @@ interface Props {
 
         checkboxSetter();
     </script>
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="title" content={title} />

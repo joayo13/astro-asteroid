@@ -1,7 +1,9 @@
 ---
-import { LINKS, SITE } from '@consts';
+import { LINKS } from '@consts';
 import ThemeController from '@components/ThemeController.astro';
 import slugify from '@utils/slugify';
+import logo from '../../public/favicon.svg';
+import { Image } from 'astro:assets';
 ---
 
 <nav
@@ -10,7 +12,9 @@ import slugify from '@utils/slugify';
     <!-- Start -->
     <div class="navbar-start gap-4">
         <!-- Brand Title -->
-        <a class="text-xl" href="/">{SITE.TITLE}</a>
+        <a class="text-xl" href="/"
+            ><Image class={'h-8 w-8'} src={logo} alt={'Astro logo'} />
+        </a>
     </div>
 
     <!-- Center (Desktop Menu) -->
@@ -42,8 +46,6 @@ import slugify from '@utils/slugify';
             }
         </ul>
     </nav>
-    <!-- spacer to account for fixed height of nav -->
-    <div class="h-[calc(var(--h-nav) + var(--p-nav))]"></div>
 
     <!-- End -->
     <div class="navbar-end gap-4">
@@ -102,6 +104,7 @@ import slugify from '@utils/slugify';
         <a class="btn hidden md:inline-flex" href="/contact">Contact Us</a>
     </div>
 </nav>
+<!-- spacer to account for fixed nav height -->
 <div class="h-(--h-nav) bg-base-200"></div>
 
 <script>
