@@ -4,7 +4,9 @@ import ThemeController from '@components/ThemeController.astro';
 import slugify from '@utils/slugify';
 ---
 
-<nav class="navbar fixed z-50 bg-base-100 transition-transform shadow">
+<nav
+    class="navbar fixed z-50 bg-base-100 transition-transform shadow h-(--h-nav) p-(--p-nav)"
+>
     <!-- Start -->
     <div class="navbar-start gap-4">
         <!-- Brand Title -->
@@ -40,6 +42,8 @@ import slugify from '@utils/slugify';
             }
         </ul>
     </nav>
+    <!-- spacer to account for fixed height of nav -->
+    <div class="h-[calc(var(--h-nav) + var(--p-nav))]"></div>
 
     <!-- End -->
     <div class="navbar-end gap-4">
@@ -98,7 +102,7 @@ import slugify from '@utils/slugify';
         <a class="btn hidden md:inline-flex" href="/contact">Contact Us</a>
     </div>
 </nav>
-<div class="h-[var(--h-header)] bg-base-200"></div>
+<div class="h-(--h-nav) bg-base-200"></div>
 
 <script>
     import { themeChange } from 'theme-change';

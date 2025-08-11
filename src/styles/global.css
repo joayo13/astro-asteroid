@@ -11,6 +11,11 @@
         dark --prefersdark;
 }
 
+:root {
+    --h-nav: 4rem;
+    --p-nav: 0.5rem;
+}
+
 :root:has(.no-doc-scroll) {
     overflow: hidden;
 }
