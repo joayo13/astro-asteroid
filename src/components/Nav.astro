@@ -50,8 +50,12 @@ import { Image } from 'astro:assets';
     <!-- End -->
     <div class="navbar-end gap-4">
         <ThemeController />
-        <div class="dropdown dropdown-bottom dropdown-end">
-            <div tabindex="0" role="button" class="btn btn-ghost p-0 lg:hidden">
+        <div class="dropdown dropdown-end">
+            <div
+                tabindex="0"
+                role="button"
+                class="btn btn-ghost p-0 lg:hidden z-20"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-8 w-8"
@@ -69,7 +73,7 @@ import { Image } from 'astro:assets';
 
             <ul
                 tabindex="0"
-                class="menu menu-xl dropdown-content bg-base-100 rounded-b-box mt-3 -right-2 z-1 w-screen shadow"
+                class="menu menu-xl dropdown-content bg-base-100 rounded-b-box -right-2 mt-3 z-10 w-screen drop-shadow-md"
             >
                 {
                     LINKS.map((link) =>
