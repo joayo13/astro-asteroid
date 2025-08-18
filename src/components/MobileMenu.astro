@@ -1,0 +1,37 @@
+<nav
+    id="mobileMenu"
+    class="fixed grid place-items-center text-2xl p-12 overflow-hidden top-0 bg-base-100 inset-0 origin-top transition-all duration-300 ease-in-out h-screen opacity-0"
+>
+    <ul class="flex flex-col gap-4 tracking-tight">
+        <li>Link 1</li>
+        <li>Link 2</li>
+        <li>Link 3</li>
+        <li>Link 4</li>
+    </ul>
+</nav>
+
+<script>
+    const hamburger = document.querySelector(
+        '.hamburger-menu input'
+    ) as HTMLInputElement;
+    const mobileMenu = document.getElementById('mobileMenu') as HTMLElement;
+
+    hamburger?.addEventListener('click', () => {
+        toggleMobileMenu();
+    });
+
+    function toggleMobileMenu() {
+        // if mobile menu is not open, open it else close it
+        // apply no doc scroll so scrolling is disabled while menu is open
+        if (mobileMenu.classList.contains('opacity-100')) {
+            mobileMenu.classList.remove('.no-doc-scroll');
+            mobileMenu.classList.add('opacity-0');
+            mobileMenu.classList.remove('opacity-100');
+            hamburger.checked = false;
+        } else {
+            mobileMenu.classList.add('.no-doc-scroll');
+            mobileMenu.classList.add('opacity-100');
+            mobileMenu.classList.remove('opacity-0');
+        }
+    }
+</script>
