@@ -5,12 +5,12 @@ import slugify from '@utils/slugify';
 
 <ul
     tabindex="0"
-    class="menu menu-lg dropdown-content bg-base-100 rounded-box w-52 mt-3 z-10 p-2 shadow"
+    class="menu menu-lg dropdown-content bg-base-100 rounded-b-box w-screen mt-3 -right-2 z-10 p-2 shadow border-opacity-50"
 >
     {
         LINKS.map((link) =>
             link.SUBLINKS ? (
-                <li>
+                <li class="border-b-[1px] border-b-base-content/50 border-dotted">
                     <details>
                         <summary>{link.TITLE}</summary>
                         <ul class="p-2">
@@ -25,7 +25,7 @@ import slugify from '@utils/slugify';
                     </details>
                 </li>
             ) : (
-                <li>
+                <li class="not-last:border-b-[1px] border-b-base-content/50 border-dotted">
                     <a href={slugify(link.TITLE)}>{link.TITLE}</a>
                 </li>
             )

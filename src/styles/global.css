@@ -38,3 +38,16 @@
     transition: none !important;
     transform: none !important;
 }
+/* add animate class to elements you want to fade in */
+.animate {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all;
+    transition-timing-function: ease-out;
+    transition-duration: 300ms;
+}
+
+.animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
