@@ -14,7 +14,7 @@ import MobileMenu from './MobileMenu.astro';
     <!-- Start -->
     <div class="navbar-start gap-4">
         <!-- Brand Title -->
-        <a class="text-xl navbar-item" href="/"
+        <a class="text-xl" href="/"
             ><Image class={'h-8 w-8'} src={logo} alt={'Astro logo'} />
         </a>
     </div>
@@ -52,8 +52,10 @@ import MobileMenu from './MobileMenu.astro';
     <!-- End -->
     <div class="navbar-end gap-4">
         <ThemeController />
-        <Hamburger />
-        <MobileMenu />
+        <div class="dropdown dropdown-end">
+            <Hamburger />
+            <MobileMenu />
+        </div>
         <a class="btn hidden md:inline-flex" href="/contact">Contact Us</a>
     </div>
 </nav>
@@ -97,26 +99,4 @@ import MobileMenu from './MobileMenu.astro';
             }
             lastScroll = currentScroll;
         });
-</script>
-<script is:inline>
-    let isOpen = false;
-    const button = document.getElementById('hamburgerWrapper');
-    button.addEventListener('click', () => {
-        if (!isOpen) {
-            document
-                .getElementById('globalnav-anim-menutrigger-bread-top-open')
-                .beginElement();
-            document
-                .getElementById('globalnav-anim-menutrigger-bread-bottom-open')
-                .beginElement();
-        } else {
-            document
-                .getElementById('globalnav-anim-menutrigger-bread-top-close')
-                .beginElement();
-            document
-                .getElementById('globalnav-anim-menutrigger-bread-bottom-close')
-                .beginElement();
-        }
-        isOpen = !isOpen;
-    });
 </script>
